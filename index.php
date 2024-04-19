@@ -15,7 +15,7 @@ include 'dbconnect.php';
    
 </head>
 <body>
-    <h1>💠Forum💠</h1>
+    <h1>💠Community Forum💠</h1>
 
     <main>
 
