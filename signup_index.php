@@ -95,16 +95,17 @@
                 <?php endif; ?>
                 <!-- Signup form fields -->
                 <div class="form_group">
-                    <label for="username">Name*</label><br>
+                    <label for="username"> Username<echo '<p style="color: red;">*</label><br>
                     <input type="text" name="username" placeholder="Your name" id="username" class="form_style" required><br>
                 </div>
                 <div class="form_group">
-                    <label for="email">Email*</label><br>
+                    <label for="email">Email<echo '<p style="color: red;">*</label><br>
                     <input type="email" name="email" placeholder="Your email" id="email" class="form_style" required><br>
                 </div>
                 <div class="form_group">
-                    <label for="password">Password*</label><br>
-                    <input type="password" name="password" placeholder="Your password" id="password" class="form_style" required><br>
+                    <label for="password">Password<echo '<p style="color: red;">*</label><br>
+                    <input type="password" name="password" placeholder="Your password" id="password" class="form_style" required>
+                    <br>
                     <input type="checkbox" id="showPassword">
                     <label for="showPassword">Show password</label>
                 </div>

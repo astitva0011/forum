@@ -1,6 +1,6 @@
 <?php
-include 'handle_comment_submission.php'; // Include the file for handling comment submission
-include 'retrieve_question_details.php'; // Include the file for retrieving question details and comments
+include 'handle_comment_submission.php'; 
+include 'retrieve_question_details.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -10,10 +10,9 @@ include 'retrieve_question_details.php'; // Include the file for retrieving ques
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/forum/styles.css">
     <title>Question Page</title>
-    <!-- Link to your CSS stylesheet -->
+    
     <style>
-        /* Apply styles from styles.css */
-        /* Add any additional styles specific to this page */
+       
         body {
             background-color: #4799ae;
             padding: 2px;
@@ -136,14 +135,14 @@ include 'retrieve_question_details.php'; // Include the file for retrieving ques
     <?php if(isset($question_row)): ?>
         <div class="question">
             <p><strong>Question:</strong> <?php echo $question_row["question_text"]; ?></p>
-            <p><strong>Asked by:</strong> <?php echo $question_row["user_id"]; ?></p>
+            <p><strong>Asked by:</strong> <?php echo $question_row["username"]; ?></p>
             <p><strong>Date:</strong> <?php echo $question_row["date"]; ?></p>
         </div>
     <?php else: ?>
         <p>No question found.</p>
     <?php endif; ?>
 
-    <!-- Fixed comment bar -->
+ 
     <div class="comment_form">
         <?php include 'comment_form.php'; // Include the file for the comment form ?>
     </div>

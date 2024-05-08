@@ -1,21 +1,17 @@
-<?php
-// Start session
-// Include the database connection script
-include 'dbconnect.php';
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NectarOfService</title>
-   
+    <style>
+        /* Add your CSS styles here */
+    </style>
 </head>
 <body>
-    <h1>💠Forum💠</h1>
+    <h1>💠Community Forum💠</h1>
 
     <main>
 
@@ -29,15 +25,16 @@ include 'dbconnect.php';
         <div class="form-popup" id="myForm">
             <button type="button" class="close" onclick="closeForm()">x</button>
             <form action="asked_question.php" method="POST" class="form-container">
-                <h2>Popup Form</h2>
+                <h2>Ask a Question</h2>
                 <label for="question">Your Question:</label><br>
                 <textarea id="question" name="question" rows="4" cols="50" placeholder="Ask meaningful questions, you can start them with 'what' or 'how' and end with '?' mark." required></textarea><br>
                 <button type="submit" class="btn">Submit</button>
             </form>
         </div>
+        
         <div class="sidebar">
             <form action="search.php" method="GET">
-                <input type="text" name="query"placeholder="Search for questions">
+                <input type="text" name="query" placeholder="Search for questions">
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -45,7 +42,7 @@ include 'dbconnect.php';
         <section class="question-list">
             <div class="question">
                 <h2>Latest Question</h2>
-                <p class="author"></a>
+                <p class="author">
                     <?php include 'show_questions.php'; ?>
                 </p>
             </div>
@@ -60,7 +57,7 @@ include 'dbconnect.php';
         function openForm() {
             document.getElementById("myForm").style.display = "block";
             document.getElementById("overlay").style.display = "block";
-        } 
+        }
 
         function closeForm() {
             document.getElementById("myForm").style.display = "none";

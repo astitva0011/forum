@@ -93,12 +93,13 @@ body {
         }
         ?>
         <form action="login_process.php" method="post">
-            <label for="email">Username or Email:</label><br>
+            <label for="email">Email</label><br>
             <input type="text" name="email" placeholder="Email" id="email" required><br>
-            <label for="password">Password:</label><br>
+            <label for="password">Password</label><br>
             <input type="password" name="password" placeholder="Password" id="password" required><br>
             <input type="checkbox" id="showPassword">
             <label for="showPassword">Show password</label><br>
+            <br>
             <button type="submit">Sign In</button><br>
         </form>
 

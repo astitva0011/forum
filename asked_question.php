@@ -1,13 +1,14 @@
 <?php
+// Start session
 session_start();
+
 // Include the database connection script
 include 'dbconnect.php';
 
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Extract form data
-    $question = $_POST['question'];    // Optionally, you can extract user_id if you have a way to identify the user
-    // $user_id = $_SESSION['user_id']; // for future use when the user will be logged in
+    $question = $_POST['question'];
 
     // Check if the question already exists
     $check_query = "SELECT question_id FROM questions WHERE question_text = ?";
@@ -25,17 +26,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare and execute the SQL query to insert the question into the database
-    $stmt = $conn->prepare("INSERT INTO questions (question_text) VALUES (?)");
-    // Assuming user_id is captured from the form or session
-    $stmt->bind_param("s", $question); // 's' indicates a string, 'i' indicates an integer
-    $user_id = 1; // For example, replace '1' with the actual user ID if available
+    $insert_query = "INSERT INTO questions (question_text) VALUES (?)";
+    $stmt = $conn->prepare($insert_query);
+    $stmt->bind_param("s", $question);
     $stmt->execute();
 
     // Check if the insertion was successful
     if ($stmt->affected_rows > 0) {
-        echo "Question submitted successfully.";
+        $message = "Question submitted successfully.";
     } else {
-        echo "Error submitting question.";
+        $message = "Error submitting question.";
     }
 
     // Close the statement
@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close the database connection
 $conn->close();
 
-header("Location: index.php");
+// Redirect back to the index page
+header("Location: index.php?message=" . urlencode($message));
 exit(); // Ensure that no further code is executed after the redirection
 ?>

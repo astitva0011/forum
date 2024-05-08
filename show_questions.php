@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<div class='question'>";
         echo "<a href='question_page.php?question_id=" . $row["question_id"] . "'><strong>Question:</strong> " . $row["question_text"] . "</a><br>";
-        echo "<p><strong>Asked by:</strong> " . $row["user_id"] . "</p>";
+        echo "<p><strong>Asked by:</strong> " . $row["userid"] . "</p>";
         echo "<p><strong>Date:</strong> " . $row["date"] . "</p>";
         echo "</div>";
         echo "<hr>";
