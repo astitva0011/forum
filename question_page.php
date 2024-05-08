@@ -14,7 +14,7 @@ include 'retrieve_question_details.php';
     <style>
        
         body {
-            background-color: #4799ae;
+            background-color: #000000;
             padding: 2px;
             height: 10vh;
             width: auto;
@@ -33,7 +33,7 @@ include 'retrieve_question_details.php';
         }
 
         .question {
-            background-color: #4CAF50;
+            background-color: #000000;
             padding: 15px;
             margin-bottom: 20px;
             border-radius: 30px;

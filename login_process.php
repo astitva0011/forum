@@ -1,9 +1,9 @@
 <?php
-// Include the dbconnect.php file
+
 include 'dbconnect.php';
 
 
-// Initialize error message
+
 $errorMsg = '';
 
 // Check if the request method is POST
