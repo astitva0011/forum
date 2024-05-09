@@ -1,9 +1,10 @@
 <?php
 
+// Include the dbconnect.php file
 include 'dbconnect.php';
 
 
-
+// Initialize error message
 $errorMsg = '';
 
 // Check if the request method is POST
@@ -34,14 +35,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $result->fetch_assoc();
             $hashedPassword = $row['password'];
 
-            // Verify the password using password_verify function
-            if (password_verify($password, $hashedPassword)) {
-                // Password is correct, user authenticated
-                // Start session and store user data if needed
-                $_SESSION['email'] = $email; // Store user's email in session
-                // Redirect to dashboard or another page
-                header("Location: index.php");
-                exit;
+           // Verify the password using password_verify function
+if (password_verify($password, $hashedPassword)) {
+    // Password is correct, user authenticated
+    // Retrieve user's ID and username from the database and set session variables
+    $sql_user = "SELECT user_id, username FROM users WHERE email = ?";
+    $statement_user = $conn->prepare($sql_user);
+    $statement_user->bind_param("s", $email);
+    $statement_user->execute();
+    $result_user = $statement_user->get_result();
+    
+    if ($result_user->num_rows == 1) {
+        $row_user = $result_user->fetch_assoc();
+        $_SESSION['userid'] = $row_user['userid'];
+        $_SESSION['username'] = $row_user['username'];
+    }
+
+    // Redirect to dashboard or another page
+    header("Location: index.php");
+    exit;
             } else {
                 // Password is incorrect
                 $errorMsg = "Incorrect password. Please try again.";

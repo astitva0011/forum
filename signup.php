@@ -1,4 +1,3 @@
-
 <?php
 
 // Include the dbconnect.php file
@@ -19,10 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         // User with the same username or email already exists
-       
-        echo "<a href='login.php'>login</a> instead.";
-         } 
-    else {
+        echo "<a href='login.php'>Login</a> instead.";
+    } else {
         // Hash the password for security
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -34,6 +31,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement->bind_param("sss", $username, $email, $hashedPassword);
         if ($statement->execute()) {
             // Signup successful
+            session_start();
+
+            // Retrieve the user ID of the newly inserted user
+            $user_id = $statement->insert_id;
+
+            // Set session variables for the new user
+            $_SESSION['user_id'] = $user_id; // Set user ID in session
+            $_SESSION['username'] = $username; // Set username in session
+            // Set other user-specific data in session as needed
+            
             // Redirect to the forum page
             header("Location: index.php");
             exit; // Ensure that no other output is sent
@@ -41,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Handle signup failure
             echo "Error: " . $conn->error;
         }
-
+        
         // Close statement
         $statement->close();
     }

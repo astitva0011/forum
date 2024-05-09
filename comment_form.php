@@ -1,3 +1,25 @@
+<?php
+// index.php
+
+// Start session
+session_start();
+
+// Check if user is logged in
+if(isset($_SESSION['user_id'])) {
+    // User is logged in
+    $user_id = $_SESSION['user_id'];
+    $username = $_SESSION['username'];
+    // Retrieve other user-specific data from session as needed
+} else {
+    // User is not logged in, handle accordingly (e.g., restrict access or redirect to login page)
+    header("Location: login.php");
+    exit();
+}
+
+// Your HTML content and PHP code for index.php here
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

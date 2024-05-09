@@ -83,8 +83,8 @@ textarea { width: auto; padding: 1px; margin-bottom: 10px; border: 1px solid #cc
 .question-list { margin-top: 20px; }
 
 /* Styles for question */
-.question { margin-bottom: 20px; background-color: #4CAF50; padding: 15px; border-radius: 30px; box-shadow: 5px 5px 0px 0px #000; }
-.question h2 { color: #000; font-size: 18px; margin-bottom: 10px; }
+.question { margin-bottom: 20px; background-color: #4CAF50; padding: 15px; border-radius: 30px; box-shadow: 5px 5px 0px 0px white; }
+.question h2 { color: white; font-size: 18px; margin-bottom: 10px; }
 
 /* Styles for author */
 .author { margin-top: 10px; font-style: italic; }

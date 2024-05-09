@@ -1,4 +1,16 @@
 <?php
+// Check if user is logged in
+session_start();
+if(isset($_SESSION['user_id'])) {
+    // User is logged in
+    $user_id = $_SESSION['user_id'];
+    $username = $_SESSION['username'];
+    // Retrieve other user-specific data from session as needed
+} else {
+    // User is not logged in, handle accordingly (e.g., restrict access or redirect to login page)
+    header("Location: login.php");
+}
+
 
 include 'dbconnect.php'; // Include the database connection script
 
