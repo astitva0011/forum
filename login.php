@@ -102,7 +102,9 @@ body {
             <br>
             <button type="submit">Sign In</button><br>
         </form>
-
+         <br>
+        <a href="forget.php">Forgot password?</a>
+<br>
         <!-- Sign up link -->
         <p>Don't have an account? <a href="signup_index.php">Sign up</a></p>
     </div>

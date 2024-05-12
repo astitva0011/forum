@@ -2,10 +2,10 @@
 // Database configuration
 $servername = "localhost";
 $username = "root"; // default username for XAMP
-$password = ""; //default password for XAMP (blank)
+$plaintext_password = ""; //default password for XAMP (blank)
 $database = "mydb";
 //Create connection
-$conn = new mysqli($servername, $username, $password,$database);
+$conn = new mysqli($servername, $username, $plaintext_password,$database);
 
 
 //Check connection

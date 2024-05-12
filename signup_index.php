@@ -85,7 +85,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+       <div class="container">
         <div class="form_area">
             <h2 class="title">Sign up</h2>
             <form action="signup.php" method="post">

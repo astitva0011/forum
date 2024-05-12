@@ -1,27 +1,13 @@
 <?php
-// index.php
 
-// Start session
-session_start();
 
-// Check if user is logged in
-if(isset($_SESSION['user_id'])) {
-    // User is logged in
-    $user_id = $_SESSION['user_id'];
-    $username = $_SESSION['username'];
-    // Retrieve other user-specific data from session as needed
-} else {
-    // User is not logged in, handle accordingly (e.g., restrict access or redirect to login page)
-    header("Location: login.php");
-    exit();
-}
 
 // Your HTML content and PHP code for index.php here
-?>
 
 
 include 'handle_comment_submission.php'; 
 include 'retrieve_question_details.php'; 
+
 ?>
 
 <!DOCTYPE html>
@@ -29,105 +15,9 @@ include 'retrieve_question_details.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://localhost/forum/styles.css">
+    
     <title>Question Page</title>
     
-    <style>
-       
-        body {
-            background-color: #4799ae;
-            padding: 2px;
-            height: 10vh;
-            width: auto;
-        }
-
-        h1 {
-            height: 12
-            vh;
-            text-align: center;
-            color: #333;
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        .question {
-            background-color: #4CAF50;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 30px;
-            box-shadow: 5px 5px 0px 0px #000;
-            color: #000000;
-        }
-
-        .question p {
-            margin: 0;
-        }
-
-        .question p strong {
-            font-weight: bold;
-        }
-
-        .comments {
-            margin-top: 20px;
-        }
-
-        .comment {
-            background-color: #000000;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .comment p {
-            margin: 0;
-            color: #fff;
-        }
-
-        .comment p strong {
-            font-weight: bold;
-        }
-
-        .comment_form {
-            background-color: #000000;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .comment_form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            transition: border-color 0.3s ease;
-            color: #000;
-        }
-
-        .comment_form textarea:focus {
-            outline: none;
-            border-color: #007bff;
-        }
-
-        .comment_form button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .comment_form button:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
     <h2>Comments</h2>
@@ -135,15 +25,9 @@ include 'retrieve_question_details.php';
         <div class="comments">
             <?php while($comment_row = $comments_result->fetch_assoc()): ?>
                 <div class="comment">
-                    <p><?php echo $comment_row["comment_text"]; ?></p>
-                    
-                    <p><strong>Comment ID:</strong> <?php echo $comment_row["comment_id"]; ?></p>
-                    <p><strong>Commented by:</strong> <?php echo $comment_row["username"]; ?></p>
-
-
-                    <br>
-                    <p><strong>Date:</strong> <?php echo $comment_row["date"]; ?></p>
-                    <br>
+                    <h3><strong><?php echo $comment_row["comment_text"]; ?></h3>
+                    <h4><strong>Comment ID:</strong> <?php echo $comment_row["comment_id"]; ?></h4>
+                    <h4><strong>Date:</strong> <?php echo $comment_row["date"]; ?></h4>
                 </div>
             <?php endwhile; 
             ?>
@@ -153,11 +37,11 @@ include 'retrieve_question_details.php';
     <?php endif; ?>
 
     <h1>Question</h1>
-    <?php if(isset($question_row)): ?>
+     <?php if(isset($question_row)): ?>
         <div class="question">
-            <p><strong>Question:</strong> <?php echo $question_row["question_text"]; ?></p>
-            <p><strong>Asked by:</strong> <?php echo $question_row["username"]; ?></p>
-            <p><strong>Date:</strong> <?php echo $question_row["date"]; ?></p>
+            <h3>Question: <strong> <?php echo $question_row["question_text"]; ?></h3>
+            <h4>Question id: <?php echo $question_row["question_id"]; ?></p></h4>
+            <h4><strong>Date: </strong> <?php echo $question_row["date"]; ?></p><br></h4>
         </div>
     <?php else: ?>
         <p>No question found.</p>

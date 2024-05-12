@@ -1,19 +1,5 @@
 <?php
 
-// Start session
-// Check if user is logged in
-session_start();
-if(isset($_SESSION['user_id'])) {
-    // User is logged in
-    $user_id = $_SESSION['user_id'];
-    $username = $_SESSION['username'];
-    // Retrieve other user-specific data from session as needed
-} else {
-    // User is not logged in, handle accordingly (e.g., restrict access or redirect to login page)
-    header("Location: login.php");
-}
-
-
 include 'dbconnect.php';
 
 // Include the CSS file
@@ -32,9 +18,8 @@ if ($result->num_rows > 0) {
     // Display questions
     while ($row = $result->fetch_assoc()) {
         echo "<div class='question'>";
-        echo "<a href='question_page.php?question_id=" . $row["question_id"] . "'><strong>Question:</strong> " . $row["question_text"] . "</a><br>";
-        echo "<p><strong>Asked by:</strong> " . $row["user_id"] . "</p>";
-        echo "<p><strong>Date:</strong> " . $row["date"] . "</p>";
+        echo "<a href='question_page.php?question_id=" . $row["question_id"] . "'><h3><strong>Question:</strong> " . $row["question_text"] . "</a><br></h3>";
+        echo "<h4><strong>Date:</strong> " . $row["date"] . "</p></h4>";
         echo "</div>";
         echo "<hr>";
     }
@@ -56,7 +41,7 @@ if ($result->num_rows > 0) {
 
     echo "</div>"; // End of pagination container
 
-} elseif($result->num_rows == 0){
+} elseif($result->num_rows < 1){
     echo "No Furthure questions","<a href='index.php' class='pagination-button'>Home</a>";
 }
 

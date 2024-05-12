@@ -1,24 +1,3 @@
-<?php
-// index.php
-
-// Start session
-session_start();
-
-// Check if user is logged in
-if(isset($_SESSION['user_id'])) {
-    // User is logged in
-    $user_id = $_SESSION['user_id'];
-    $username = $_SESSION['username'];
-    // Retrieve other user-specific data from session as needed
-} else {
-    // User is not logged in, handle accordingly (e.g., restrict access or redirect to login page)
-    header("Location: login.php");
-    exit();
-}
-
-// Your HTML content and PHP code for index.php here
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +62,8 @@ if(isset($_SESSION['user_id'])) {
 
 
     </style>
-<form method="POST" action="question_page.php" class="fixed-comment-bar" onsubmit="return validateComment()">
+<form method="POST" action="handle_comment_submission.php" class="fixed-comment-bar" onsubmit="return validateComment()">
+
     <input type="hidden" name="question_id" value="<?php echo $question_id; ?>">
     <textarea name="comment_text" id="comment_text" placeholder="Enter your comment"></textarea>
     <div class="sr">

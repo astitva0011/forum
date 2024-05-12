@@ -15,8 +15,6 @@ if(isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
-// Your HTML content and PHP code for index.php here
 ?>
 
 
@@ -32,8 +30,8 @@ if(isset($_SESSION['user_id'])) {
     </style>
 </head>
 <body>
-    <h1>💠Community Forum💠</h1>
-
+    <h1>🖋 <i>Discussion Forum</i> 🖋</h1>
+    <h2>Welcome, <?php echo $username; ?>🐾!</h2></i>
     <main>
 
         <!-- Button to open the popup form -->
